@@ -1,0 +1,176 @@
+﻿<Window x:Class="Menu.AddChangeMenuWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Новое блюдо" Height="450" Width="665" ResizeMode="NoResize" Icon="Resource/icons/addNewDish.png">
+    
+    <Window.Resources>
+        
+        <!-- For groupbox -->
+        <Style TargetType="GroupBox">
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="Margin" Value="10 10 10 10" />
+        </Style>
+        
+        <!-- For label-->
+        <Style TargetType="Label">
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="Margin" Value="0 10 0 0" />
+        </Style>
+
+    </Window.Resources>
+    
+    <Grid ShowGridLines="False">
+        <Grid.Background>
+            <ImageBrush ImageSource="Resource/bg/bgAddNewDishWindow.png" Stretch="UniformToFill"/>
+        </Grid.Background>
+        <!-- 
+            Divide window:
+                left  -> info about new dish
+                right -> list box with available ingredients
+        -->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="450"></ColumnDefinition>
+            <ColumnDefinition Width="200"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        
+        <GroupBox x:Name="gbMove" Grid.Column="0">
+            <GroupBox.Header>Добавление нового блюда</GroupBox.Header>
+            
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="250"></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+            
+                <StackPanel Grid.Column="0" Orientation="Vertical" HorizontalAlignment="Stretch">
+
+                <Label Content="Название блюда" />
+                <TextBox x:Name="newNameDish">
+                    <TextBox.Width>200</TextBox.Width>
+                    <TextBox.Height>25</TextBox.Height>
+                    <TextBox.Margin>0 0 0 15</TextBox.Margin>
+                </TextBox>
+
+                <Border BorderThickness="1" BorderBrush="DarkGray" Width="140" >
+                <Image x:Name="newImgForDish" Source="Resource/dishes/noimage.png">
+                    <Image.HorizontalAlignment>Center</Image.HorizontalAlignment>
+                    <Image.Width>140</Image.Width>
+                    <Image.Height>140</Image.Height>
+                </Image>
+                </Border>
+                
+                <Button x:Name="addNewDishPhoto" Click="addNewDishPhoto_Click_1">
+                    <Button.Margin>0 5 0 0</Button.Margin>
+                    <Button.Content>Открыть фото</Button.Content>
+                    <Button.Width>130</Button.Width>
+                    <Button.Height>25</Button.Height>
+                </Button>
+
+                <Label Content="Выберите категорию" />
+                <ComboBox x:Name="cmbBoxCategories">
+                    <ComboBox.Text>Выберите категорию</ComboBox.Text>
+                    <ComboBox.Width>150</ComboBox.Width>
+                    <ComboBox.HorizontalAlignment>Center</ComboBox.HorizontalAlignment>
+                </ComboBox>
+                
+                <Button x:Name="AddNewDish" Click="AddNewDish_Click_1">
+                    <Button.HorizontalAlignment>Center</Button.HorizontalAlignment>
+                    <Button.Content>Добавить блюдо</Button.Content>
+                    <Button.Width>130</Button.Width>
+                    <Button.Height>25</Button.Height>
+                    <Button.Margin>0 20 0 0</Button.Margin>
+                </Button>
+                
+
+
+            </StackPanel>
+
+                <StackPanel Grid.Column="1">
+                    <Label Content="Ингредиенты" />
+                    <ListBox x:Name="currIngredient" MouseDoubleClick="currIngredient_MouseDoubleClick" Margin="10,0,9,0">
+                        <ListBox.ToolTip>Щелкните дважды, чтобы удалить ингредиент отсюда.</ListBox.ToolTip>
+                        <ListBox.Width>150</ListBox.Width>
+                        <ListBox.Height>320</ListBox.Height>
+                        <ListBox.Foreground>Black</ListBox.Foreground>
+                    </ListBox>
+                </StackPanel>
+
+            </Grid>
+        </GroupBox>
+
+        <GroupBox x:Name="gbIngredient" Grid.Column="1" HorizontalAlignment="Stretch">
+            <GroupBox.Header>Доступные ингредиенты</GroupBox.Header>
+             
+            <Grid x:Name="InnerGridIngredient">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <StackPanel Grid.Row="0" Orientation="Horizontal">
+                    <Label Content="Поиск"/>
+                    <TextBox x:Name="findIngredient" TextChanged="TextBox_TextChanged_1">
+                        <TextBox.Height>25</TextBox.Height>
+                        <TextBox.Width>110</TextBox.Width>
+                    </TextBox>
+
+
+                    
+                </StackPanel>
+                
+                <StackPanel Grid.Row="1">
+
+                    <ListBox x:Name="lstBoxAvailbleIngredient" MouseDoubleClick="lstBoxAvailbleIngredient_MouseDoubleClick">
+                        <ListBox.ToolTip>Щелкните дважды, чтобы добавить ингредиент в блюдо.</ListBox.ToolTip>
+                        <ListBox.Width>150</ListBox.Width>
+                        <ListBox.Height>265</ListBox.Height>
+                        <ListBox.Foreground>Black</ListBox.Foreground>
+                        
+                    </ListBox>
+                    
+                    
+                    <Button x:Name="AddNewIngedient" Click="AddNewIngredient_Click">
+                        <Button.HorizontalAlignment>Center</Button.HorizontalAlignment>
+                        <Button.Content>Добавить ингредиент</Button.Content>
+                        <Button.Width>150</Button.Width>
+                        <Button.Height>25</Button.Height>
+                        <Button.Margin>0 20 0 0</Button.Margin>
+                    </Button>
+                </StackPanel>
+                
+                
+            </Grid>
+            
+            
+            <!--
+            <StackPanel>
+            <Label Content="Поиск"/>
+
+            <Button x:Name="AddNewIngedient" Click="Button1_Click_1">
+                <Button.HorizontalAlignment>Center</Button.HorizontalAlignment>
+                <Button.Content>Добавить ингредиент</Button.Content>
+                <Button.Width>150</Button.Width>
+                <Button.Height>25</Button.Height>
+                <Button.Margin>0 20 0 0</Button.Margin>
+            </Button>
+            </StackPanel>
+            -->
+        </GroupBox>
+        
+    </Grid>
+    
+    
+    <!--
+    <Canvas>
+        <Button Content="Button" Canvas.Left="32" Canvas.Top="225" Width="75" Click="Button_Click_1"/>
+        <ListBox x:Name="lsbx" SelectionMode="Multiple" Height="200" Canvas.Left="432" Canvas.Top="10" Width="150">
+            
+        </ListBox>
+
+
+
+    </Canvas>
+    -->
+</Window>

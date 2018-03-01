@@ -1,0 +1,90 @@
+﻿<Window x:Class="Menu.EditDeleteIngredientWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Изменить\Удалить ингредиент" Height="450" Width="500" ResizeMode="NoResize" Icon="Resource/icons/editdelete.png">
+
+    <Window.Resources>
+
+        <!-- For groupbox -->
+        <Style TargetType="GroupBox">
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="Margin" Value="10 10 10 10" />
+        </Style>
+
+        <!-- For label-->
+        <Style TargetType="Label">
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="Margin" Value="0 10 0 0" />
+        </Style>
+
+    </Window.Resources>
+
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="Resource/bg/EditDeleteIngredient.png" Stretch="UniformToFill"/>
+        </Grid.Background>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"></ColumnDefinition>
+            <ColumnDefinition ></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <GroupBox x:Name="gbIngredient" Grid.Column="0" HorizontalAlignment="Stretch">
+            <GroupBox.Header>Доступные ингредиенты</GroupBox.Header>
+
+            <Grid x:Name="InnerGridIngredient">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <StackPanel Grid.Row="0" Orientation="Horizontal">
+                    <Label Content="Поиск"/>
+                    <TextBox x:Name="findIngredient" TextChanged="findIngredient_TextChanged_1">
+                        <TextBox.Height>25</TextBox.Height>
+                        <TextBox.Width>110</TextBox.Width>
+                    </TextBox>
+                </StackPanel>
+                
+                <StackPanel Grid.Row="1">
+
+                    <ListBox x:Name="lstBoxAvailbleIngredient" SelectionChanged="lstBoxAvailbleIngredient_SelectionChanged" >
+                        <ListBox.ToolTip>Нажмите на ингредиент, чтобы вывести информацию о нем.</ListBox.ToolTip>
+                        <ListBox.Width>150</ListBox.Width>
+                        <ListBox.Height>300</ListBox.Height>
+                        <ListBox.Foreground>Black</ListBox.Foreground>
+                    </ListBox>
+
+                    
+
+
+                </StackPanel>
+            </Grid>
+        </GroupBox>
+   
+        <GroupBox x:Name="gbInfo" Grid.Column="1" HorizontalAlignment="Stretch">
+            <GroupBox.Header>Информация</GroupBox.Header>
+            
+            <StackPanel>
+                <Label Margin="0">Название ингредиента</Label>
+                <TextBox x:Name="nameIngredient" TextAlignment="Center" Height="25" Width="150" Margin="0 0 0 30" IsReadOnly="True" />
+                <Border BorderThickness="1" BorderBrush="DarkGray" Width="220" >
+                    <Image x:Name="imgIngredient" Width="220" Height="220" Source="Resource\Ingredient\noimage.png"/> 
+                </Border>
+
+                <Button x:Name="deleteIngredient" Click="deleteIngredient_Click_1">
+                    <Button.HorizontalAlignment>Center</Button.HorizontalAlignment>
+                    <Button.Content>Удалить ингредиент</Button.Content>
+                    <Button.Width>150</Button.Width>
+                    <Button.Height>25</Button.Height>
+                    <Button.Margin>0 20 0 0</Button.Margin>
+                </Button>
+
+            </StackPanel>
+        </GroupBox>
+    
+    </Grid>
+</Window>
+
+    

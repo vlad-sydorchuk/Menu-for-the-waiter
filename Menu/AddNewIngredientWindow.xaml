@@ -1,0 +1,66 @@
+﻿<Window x:Class="Menu.AddNewIngredientWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Новый ингредиент" Height="390" Width="280" ResizeMode="NoResize" Icon="Resource/icons/addNewDish.png">
+
+    <Window.Resources>
+        <!-- For groupbox -->
+        <Style TargetType="GroupBox">
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="Margin" Value="10 10 10 10" />
+        </Style>
+
+        <!-- For label-->
+        <Style TargetType="Label">
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="Margin" Value="0 10 0 0" />
+        </Style>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="Resource/bg/bgAddNewIngredient.png" Stretch="UniformToFill"/>
+        </Grid.Background>
+        <GroupBox x:Name="gbMove" Grid.Column="0">
+            <GroupBox.Header>Добавление нового ингредиента</GroupBox.Header>
+            <StackPanel Grid.Column="0" Orientation="Vertical" HorizontalAlignment="Stretch">
+
+                <Label Content="Название ингредиента" />
+                <TextBox x:Name="newNameIngredient">
+                    <TextBox.Width>200</TextBox.Width>
+                    <TextBox.Height>25</TextBox.Height>
+                    <TextBox.Margin>0 0 0 15</TextBox.Margin>
+                </TextBox>
+
+                <!--<Border BorderThickness="1" BorderBrush="DarkGray" Width="140" > -->
+                <Border Width="140" >
+                    <Border.Background>White</Border.Background>
+                    <Border.Opacity>0.7</Border.Opacity>
+                    <Image x:Name="newImgForIngredient" Source="Resource/ingredient/noimage.png">
+                        <Image.HorizontalAlignment>Center</Image.HorizontalAlignment>
+                        <Image.Width>140</Image.Width>
+                        <Image.Height>140</Image.Height>
+                    </Image>
+                </Border>
+
+                <Button x:Name="btnAddNewIngredientPhoto" Click="btnAddNewIngredientPhoto_Click_1">
+                    <Button.Margin>0 5 0 0</Button.Margin>
+                    <Button.Content>Открыть фото</Button.Content>
+                    <Button.Width>130</Button.Width>
+                    <Button.Height>25</Button.Height>
+                </Button>
+
+                <Button x:Name="AddNewIngredient" Click="AddNewIngredient_Click">
+                    <Button.HorizontalAlignment>Center</Button.HorizontalAlignment>
+                    <Button.Content>Добавить</Button.Content>
+                    <Button.Width>130</Button.Width>
+                    <Button.Height>25</Button.Height>
+                    <Button.Margin>0 20 0 0</Button.Margin>
+                </Button>
+
+          </StackPanel>
+        </GroupBox>
+    </Grid>
+</Window>

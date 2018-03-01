@@ -1,0 +1,113 @@
+﻿<Window x:Class="Menu.EditDeleteDishWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Изменить/Удалить блюдо" Height="500" Width="500" ResizeMode="NoResize" Icon="Resource/bg/EditDeleteIngredient.png">
+
+    <Window.Resources>
+
+        <!-- For groupbox -->
+        <Style TargetType="GroupBox">
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="Margin" Value="10 10 10 10" />
+        </Style>
+
+        <!-- For label-->
+        <Style TargetType="Label">
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="Margin" Value="0 4 0 0" />
+        </Style>
+
+    </Window.Resources>
+
+    <StackPanel>
+        <Grid x:Name="mainGrid">
+            <Grid.Background>
+                <ImageBrush ImageSource="Resource/bg/EditDeleteDish.png" Stretch="UniformToFill"/>
+            </Grid.Background>
+            
+            <Grid.RowDefinitions>
+                <RowDefinition Height="250"></RowDefinition>
+                <RowDefinition Height="30"></RowDefinition>
+                <RowDefinition Height="190"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <GroupBox Header="Информация о блюде">
+            <Grid x:Name="Row1" Grid.Row="0" Margin="0 10 0 10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Grid.Column="0">
+                <Border BorderThickness="1" BorderBrush="DarkGray" Width="180" Height="180">
+                    <Image x:Name="imgDish" Width="180" Height="180" Source="Resource\dishes\noimage.png" />
+                </Border>
+                </StackPanel>
+                
+                <StackPanel Grid.Column="1">
+                        <Label Content="Ингредиенты" Margin="0" />
+                        <ListBox x:Name="lstBoxAvailbleIngredient">
+                        <ListBox.ToolTip>Нажмите на ингредиент, чтобы вывести информацию о нем.</ListBox.ToolTip>
+                        <ListBox.Width>180</ListBox.Width>
+                        <ListBox.Height>155</ListBox.Height>
+                        <ListBox.Foreground>Black</ListBox.Foreground>
+                    </ListBox>
+                </StackPanel>
+            </Grid>
+            </GroupBox>
+            
+            <Grid Grid.Row="1">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    
+                    <ComboBox x:Name="cmbCategory" SelectionChanged="cmbCategory_SelectionChanged">
+                        <ComboBox.Width>165</ComboBox.Width>
+                        <ComboBox.Height>23</ComboBox.Height>
+                        <ComboBox.Margin>5 0 5 0</ComboBox.Margin>
+                    </ComboBox>
+                    
+                    <Button x:Name="deleteDish" Click="deleteDish_Click_1">
+                        <Button.HorizontalAlignment>Center</Button.HorizontalAlignment>
+                        <Button.Content>Удалить блюдо</Button.Content>
+                        <Button.Width>130</Button.Width>
+                        <Button.Height>25</Button.Height>
+                        <Button.Margin>0 0 5 0</Button.Margin>
+                    </Button>
+
+                    <Button x:Name="changeIng" Click="changeIng_Click_1">
+                        <Button.HorizontalAlignment>Center</Button.HorizontalAlignment>
+                        <Button.Content>Изменить состав</Button.Content>
+                        <Button.Width>130</Button.Width>
+                        <Button.Height>25</Button.Height>
+                        <Button.Margin>0 0 0 0</Button.Margin>
+                    </Button>
+                </StackPanel>
+            </Grid>
+
+            <Grid Grid.Row="2">
+                <StackPanel>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <Label>
+                            <Label.Content>Поиск: </Label.Content>
+                        </Label>
+                        <TextBox x:Name="findDish" TextChanged="TextBox_TextChanged_1">
+                            <TextBox.Width>400</TextBox.Width>
+                            <TextBox.Margin>0 5 0 5</TextBox.Margin>
+                        </TextBox>
+                    </StackPanel>
+                    
+                    <ListBox x:Name="lstBoxAllDish" SelectionChanged="lstBoxAllDish_SelectionChanged">
+                        <ListBox.ToolTip>Нажмите на ингредиент, чтобы вывести информацию о нем.</ListBox.ToolTip>
+                        <ListBox.Width>450</ListBox.Width>
+                        <ListBox.Height>140</ListBox.Height>
+                        <ListBox.Foreground>Black</ListBox.Foreground>
+                    </ListBox>
+                </StackPanel>
+            </Grid>
+
+        </Grid>
+    </StackPanel>
+    
+    
+</Window>
